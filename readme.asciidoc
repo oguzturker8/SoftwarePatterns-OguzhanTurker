@@ -1,2 +1,2 @@
 README ASCIIDOC
-include::xd.adoc[]
+
