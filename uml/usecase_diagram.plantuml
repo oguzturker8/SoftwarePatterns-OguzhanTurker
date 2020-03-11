@@ -1,0 +1,20 @@
+@startuml
+
+title Use Case Diagram 
+
+
+(Login)
+(Run Process) as (Proc1)
+usecase (List Processes) as (Proc2)
+usecase (Select Process) as (Proc3)
+usecase (Undo Process) as (Proc4)
+usecase (Log Out) as (Proc5)
+
+Login -> Proc1
+Proc1 -> Proc2
+Proc2 -> Proc3
+Proc3 -> Proc4
+Proc4 -> Proc5
+Proc5 -> Login
+
+@enduml
