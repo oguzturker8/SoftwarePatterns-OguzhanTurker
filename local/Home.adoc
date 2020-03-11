@@ -1,0 +1,20 @@
+= Welcome to the YazilimTasarimKaliplari20 wiki!
+
+
+include::Admonition[]
+
+include::Cplusplus.adoc[]
+
+include::Image.adoc[]
+
+include::Link.adoc[]
+
+include::Linux-Bash.adoc[]
+
+include::List.adoc[]
+
+include::Table.adoc[]
+
+include::Title.adoc[]
+
+include::Video.adoc[]

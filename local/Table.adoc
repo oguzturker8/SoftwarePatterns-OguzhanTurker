@@ -1,0 +1,16 @@
+== Table
+
+
+=== *Table with two columns, a header, and two rows of content*
+
+[%header,cols=2*] 
+|===
+|Name
+|Extension
+
+|Markdown
+|.md
+
+|AsciiDoctor
+|.asciidoc
+|===

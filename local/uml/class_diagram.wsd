@@ -1,0 +1,31 @@
+@startuml
+
+title Classes - Class Diagram Example
+
+
+class Object1 {
+  +Int Age
+  +String Name
+  +Int Salary
+  +void revealSalary()
+  +Boolean deleteClass()
+}
+
+class Object2 {
+  +Int Age
+  +String Name
+  +Int Salary
+  +void revealSalary()
+  +Boolean deleteClass()
+}
+class Object3 {
+  +Int Age
+  +String Name
+  +Int Salary
+  +void revealSalary()
+  +Boolean deleteClass()
+}
+
+class Object4
+
+@enduml

@@ -1,0 +1,30 @@
+== Image
+
+:imagesdir: images
+
+=== *Block*
+
+image::asciidoctor.jpg[]
+
+image::designpatterns.png[designpatterns]
+
+.Linux Logo
+[#img-linux]
+[caption="Figure 1: ",link=https://www.linux.org/]
+image::linux.png[Linux,600,400]
+
+image::https://asciidoctor.org/images/octocat.jpg[GitHub mascot]
+
+=== *Inline*
+
+Click image:play.png[Play,15,15 title="Play"] to get the party started.
+
+Click image:pause.png[15,15,title="Pause"] when you need a break.
+
+*Inline image with positioning role*
+
+image:asciidoctor.jpg[Sunset,150,150,role="right"] What a beautiful formatting program!
+
+=== *Embedded*
+= Document Title
+:data-uri:

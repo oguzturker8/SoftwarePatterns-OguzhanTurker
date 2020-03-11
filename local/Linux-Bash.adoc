@@ -1,0 +1,48 @@
+== Linux Bash Script Code
+
+.*Hello World*
+[source,shell]
+----
+require 'sinatra'
+
+get '/hi' do
+  "Hello World!"
+end
+----
+
+.*Using echo to Print*
+[source,shell]
+----
+#!/bin/bash
+echo "Printing text"
+echo -n "Printing text without newline"
+echo -e "\nRemoving \t special \t characters\n"
+----
+
+.*Using Comments*
+[source,shell]
+----
+#!/bin/bash
+
+# Adding two values
+((sum=25+35))
+
+#Print the result
+echo $sum
+----
+
+
+.*Using the AND Operator*
+[source,shell]
+----
+#!/bin/bash
+
+echo -n "Enter Number:"
+read num
+
+if [[ ( $num -lt 10 ) && ( $num%2 -eq 0 ) ]]; then
+echo "Even Number"
+else
+echo "Odd Number"
+fi
+----
