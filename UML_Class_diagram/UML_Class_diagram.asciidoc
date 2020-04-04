@@ -1,0 +1,104 @@
+@startuml
+
+Title Age Of Empires II -  Unit System
+left to right direction
+
+Interface Unit{
++Attack()
++Move()
+}
+
+Class ArmyFlag{
++FlagText
++FlagColor
++FlagSymbol
++Plant()
+}
+
+Class Spearman{
++ClassName
++Hp
++Attack()
++Move()
+}
+
+Class Archer{
++ClassName
++Hp
++Attack()
++Move()
+}
+
+Class Item{
++Price
++ItemId
++ItemName
++Durability
+}
+
+Class HeavyArmor{
++ArmorRate
+}
+
+Class LightArmor{
++ArmorRate
+}
+
+Class Spear{
++DamageRate
+}
+
+Class Bow{
++DamageRate
+}
+
+Class CrossBow{
++DamageRate
+}
+
+Class Army{
++MeleeSize
++RangeSize
++ArmyName
+#Casualty
+-ArmyId
++Battle()
++Retreat()
+
+}
+
+
+/' Relations   '/
+
+/' Dependency   '/
+Spearman  ..> Army : <<deploy>>
+Archer  ..> Army : <<deploy>>
+
+/' Realization   '/
+Spearman ..|> Unit
+Archer ..|> Unit
+
+/' Use   '/
+Spearman  ..> Item : <<use>>
+Archer  ..> Item : <<use>>
+
+/' Generalization   '/
+Item <|-- HeavyArmor
+Item <|-- LightArmor
+Item <|-- Spear
+Item <|-- Bow
+Item <|-- CrossBow
+
+/' Composition   '/
+Spearman *-- "1" HeavyArmor
+Spearman *-- "1" Spear
+Archer *-- "1" LightArmor
+Archer *-- "1" Bow
+
+/' Association  '/
+ArmyFlag  - Spearman
+
+/' Aggregation   '/
+Archer    o-- "1" CrossBow
+
+@enduml
