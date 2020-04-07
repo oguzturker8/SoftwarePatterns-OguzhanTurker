@@ -1,0 +1,42 @@
+@startuml
+
+title Factory Pattern
+left to right direction
+
+interface Vehicle{
++void produce()
++void calculateCost(String Option)
+}
+class Car{
++void produce()
++void calculateCost(String Brand)
+}
+class Plane{
++void produce()
++void calculateCost(String Brand)
+}
+class Ship{
++void produce()
++void calculateCost(String Brand)
+}
+class VehicleFactory{
++Vehicle getVehicle(String vehicleType)
+}
+class FactoryPattern_Main{
+VehicleFactory vehicleFactory
+Vehicle vehicle1
+Vehicle vehicle2
+Vehicle vehicle3
+}
+
+Car ..|> Vehicle
+Plane ..|> Vehicle
+Ship ..|> Vehicle
+
+VehicleFactory --> Car
+VehicleFactory --> Plane
+VehicleFactory --> Ship
+FactoryPattern_Main ..> Vehicle : <<use>>
+FactoryPattern_Main ..> VehicleFactory : <<use>>
+
+@enduml
