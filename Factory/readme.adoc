@@ -1,0 +1,126 @@
+
+=== *Factory Pattern*
+
+Ortak ozelliklere sahip nesneler uretilirken, nesneleri tek bir noktadan ureterek kod fazlaliginin onune gecen bir tasarim kalibidir.
+
+=== UML
+
+image::factoryUML.png[]
+
+==== *Vehicle.java*
+
+Uretilecek siniflarin ortak ozelliklerini aldigi Interface'dir.
+
+[source,java]
+-----------------
+public interface Vehicle {
+    void produce(); <1>
+    void calculateCost(String Option); <2>
+}
+-----------------
+<1> Override edilecek produce fonksyionu tanimlanir.
+<2> Override edilecek calculateCost fonksiyonu tanimlanir.
+
+
+==== *Car.java*
+
+Vehicle Interface'ini implement eder.
+
+[source,java]
+-----------------
+public class Car implements Vehicle {
+    @Override <1>
+    public void produce() {
+        System.out.println("Car  produced successfully");
+    }
+    @Override <2>
+    public void calculateCost(String Brand) {
+        switch (Brand) {
+            case "BMW":
+                System.out.println("Producing cost is 1, Brand is "+Brand);
+                break;
+            case "Toyota":
+                System.out.println("Producing cost is 2, Brand is "+Brand);
+                break;
+            default:
+                System.out.println("Define car brand first "+Brand);
+        }
+    }
+}
+-----------------
+<1> Produce fonksyionu override edilir.
+<2> CalculateCost fonksyionu override edilir.
+
+
+==== *Plane.java*
+
+Vehicle Interface'ini implement eder.
+
+[source,java]
+-----------------
+public class Plane implements Vehicle {
+    @Override <1>
+    public void produce() {
+        System.out.println("Plane  produced successfully");
+    }
+
+    @Override <2>
+    public void calculateCost(String Personal) {
+        if (Personal.equals("1"))
+            System.out.println("Producing cost is 3, Personal");
+        else if (Personal.equals("0"))
+            System.out.println("Producing cost is 4, Not Personal");
+        else System.out.println("Wrong definition");
+    }
+}
+-----------------
+<1> Produce fonksyionu override edilir.
+<2> CalculateCost fonksyionu override edilir.
+
+==== *Ship.java*
+
+Vehicle Interface'ini implement eder.
+
+[source,java]
+-----------------
+public class Ship implements Vehicle {
+
+    @Override <1>
+    public void produce() {
+        System.out.println("Ship produced successfully");
+    }
+    
+    @Override <2>
+    public void calculateCost(String motorSize) {
+        if (Integer.parseInt(motorSize) < 1)
+            System.out.println("Producing cost is 5");
+        else
+            System.out.println("Producing cost is 6");
+    }
+}
+-----------------
+<1> Produce fonksyionu override edilir.
+<2> CalculateCost fonksyionu override edilir.
+
+==== *VehicleFactory.java*
+
+Verilen parametreye gore nesne ureten fabrika sinifidir.
+
+[source,java]
+-----------------
+public class VehicleFactory {
+    public Vehicle getVehicle(String vehicleType) { <1>
+        if (vehicleType == null)
+            return null;
+        else if (vehicleType.equals("Car"))
+            return new Car();
+        else if (vehicleType.equals("Plane"))
+            return new Plane();
+        else if (vehicleType.equals("Ship"))
+            return new Ship();
+        return null;
+    }
+}
+-----------------
+<1> New kullanmadan parametle ile sinif olusturan GetVehicle fonksyionu tanimlanir.
+

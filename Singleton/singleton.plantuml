@@ -1,0 +1,17 @@
+@startuml
+
+Title Singleton
+left to right direction
+
+class ThreadSafeSingleton{
++String context
+-{static}ThreadSafeSingleton tsInstance
+-ThreadSafeSingleton()
++{static}synchronized ThreadSafeSingleton getTSInstance()
++void log(String Thread)
+}
+
+ThreadSafeSingleton --> ThreadSafeSingleton
+
+
+@enduml
