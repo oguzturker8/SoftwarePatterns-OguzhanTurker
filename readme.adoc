@@ -1,0 +1,12 @@
+README ASCIIDOC
+
+
+include::UML_Class_diagram/readme.adoc[]
+
+include::Factory/readme.adoc[]
+
+include::Singleton/readme.adoc[]
+
+include::Prototype/readme.adoc[]
+
+include::ObjectPool/readme.adoc[]
