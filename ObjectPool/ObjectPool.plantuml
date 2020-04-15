@@ -1,0 +1,32 @@
+@startuml
+
+left to right direction
+Title Object Pool
+
+class ObjectPool{
+-long expirationTime
+-long w8Time
+-LinkedList<Object> list
+-{static} ObjectPool instance
+-{static} int size
+-String name
+-Long now
++synchronized {static} ObjectPool getInstance()
++synchronized Object getObject(String name)
++Object getFromPool(String name)
++Object createNewObj()
+}
+
+class Object{
+-Long now
++Long getNow()
+}
+
+
+
+ObjectPool --> ObjectPool
+
+ObjectPool --> Object
+
+
+@enduml
