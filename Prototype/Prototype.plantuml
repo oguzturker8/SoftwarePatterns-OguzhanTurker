@@ -1,0 +1,24 @@
+@startuml
+
+left to right direction
+Title Prototype 
+
+abstract class Character{
+-int id
++String className
+{abstract} void fight()
++int getId()
++void setId(int id
++String getClassName()
++Object shallow()
++Object clone()
+}
+
+Paladin ..|> Character
+Wizard ..|> Character
+Rogue ..|> Character
+
+
+
+
+@enduml
