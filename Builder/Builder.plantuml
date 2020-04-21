@@ -1,0 +1,43 @@
+@startuml
+
+title Custom Vehicle Builder
+left to right direction
+
+class Vehicle{
+-String type
+-String customerName
+-String brand
+-String price
+-int wheel
+-int wing
+-boolean isFlying
+-boolean isFloating
++Vehicle(Builder builder)
++void log()
+}
+
+class Builder{
+-String type
+-String customerName
+-String brand
+-String price
+-int wheel
+-int wing
+-boolean isFlying
+-boolean isFloating
++{static} Builder newInstance()
+-Builder()
++Builder setType(String type)
++Builder setCustomerName(String customerName)
++Builder setBrand(String brand)
++Builder setPrice(String price)
++Builder setWheel(int wheel)
++Builder setWing(int wing)
++Builder setIsFlying(boolean isFlying)
++Builder setIsFloating(boolean isFloating)
++Vehicle build()
+}
+
+Builder ..> Vehicle : <<use>>
+
+@enduml
