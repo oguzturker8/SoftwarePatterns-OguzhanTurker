@@ -1,0 +1,55 @@
+@startuml
+
+title Observer Pattern
+left to right direction
+
+
++class Subject{
+-ArrayList<Observer> observers
+-String news
+-Code code
+-static Subject instance
+-Subject()
++{static}Subject getInstance()
++String getNews()
++void setNews(String news, Code code)
++void attach(Observer observer)
++void notifyAllObservers()
+}
+
++abstract class Observer{
+#Subject subject
++{abstract} void update(Code code)
+}
+
+enum Code {
+  TR
+  PT
+  IT
+}
+
++class BBCTR{
++BBCTR(Subject subject)
++void update(Code code)
+}
+
++class BBCPT{
++BBCTR(Subject subject)
++void update(Code code)
+}
+
++class BBCIT{
++BBCTR(Subject subject)
++void update(Code code)
+}
+
+
+Subject --> Observer
+Subject --> Code
+Subject --> Subject
+
+BBCTR ..|> Observer
+BBCIT ..|> Observer
+BBCPT ..|> Observer
+
+@enduml
