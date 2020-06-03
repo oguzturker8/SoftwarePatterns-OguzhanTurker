@@ -16,7 +16,7 @@ Gelistirilen kodda, yeni ozellikler varolan kodlar degistirilmeden eklenebilmeli
 
 === UML
 
-image::OpenclosedUML.png[]
+image::openclosedUML.png[]
 
 ==== *Weapon.java*
 
