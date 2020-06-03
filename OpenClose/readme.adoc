@@ -1,0 +1,122 @@
+
+=== *OPEN-CLOSED PRINCIPLE*
+
+Open-Closed Prensibi SOLID prensiplerinden biridir. Bir sinif ya da fonksiyon var olan ozellikleri korumali (davranisini degistirmiyor olmali ) ve yeni ozellikler kazanabilmelidir.
+
+> Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification.
+
+
+**Open**: Sinifa yeni davranislarin eklenebilmesini saglamaktadir. Gelisime acik olmalidir.
+
+**Closed**: Bir sinifin temel ozelliklerinin degisiminin mumkun olmamasidir. Kod degisimine kapali olmalidir
+
+Gelistirilen kodda, yeni ozellikler varolan kodlar degistirilmeden eklenebilmelidir. Bu nedenle baslangicta gelistirimde esnek bir model uygulanmalidir. Gelistirim varolan yapiyi bozmalali ve sonraki gereksinimlere kolayca adapte olabilmelidir.
+
+
+
+=== UML
+
+image::openclosedUML.png[]
+
+==== *Weapon.java*
+
+Silahlarin impelement ettigi arayuzdur.
+
+[source,java]
+-----------------
+public interface Weapon {
+	
+	int getCost();
+	void log();         <1>
+	void listItems();
+}
+-----------------
+<1> Override edilecek fonksiyonlar.
+
+==== *Blacksmith.java*
+
+Weapons arayuzunu implement eden silah siniflarinin kullanildigi siniftir.
+
+[source,java]
+-----------------
+	 public int forge(List<Weapon> weapons) {       <1>
+		 System.out.println("Blacksmith forge list:");   
+		 for (Weapon weapon: weapons) {           
+			 weapon.log();  <2>
+		 } 
+		 return cost;
+	 }
+-----------------
+<1> Blacksmith'in silah listesini dovmek icin gerekli miktari hesaplayan fonksiyondur.
+<2> Sinifin override ettigi getCost fonksiyonu ile toplam maliyet hesaplanir.
+
+Burada maliyet hesabi silah basina gereken iron miktari ile bulunuyordu. Cunku Weapon'i implement eden tek sinif Sword sinifiydi.
+Ardindan Bow ve Staff siniflari da eklendiginden maliyet hesabi degisti. Artik sadece iron degil wood degerine de bakiliyor.
+Fakat;
+Sword sinifi sadece iron,
+Bow sinifi hem iron hem wood,
+Staff sinifi ise sadece wood
+kullandigindan cost fonksiyonu icin uc sinifa uygun kontrolculer yazilmasi gerekiyordu. Bu noktada Open-Closed prensibine uygun olmasi icin silahlarin maliyet hesaplamalarini Weapon arayuzune ekleyerek her sinifta maliyeti kendine gore hesaplayip donduren fonksiyonlar yazildi. Bu sayede Open-Closed prensibine bagli kalindi.
+
+==== *Sword.java*
+
+Weapons arayuzunu implement eden silah sinifidir.
+
+[source,java]
+-----------------
+public class Sword implements Weapon{
+    ...
+
+	@Override
+	public int getCost() {
+		return (iron*2);  <1>
+	}
+
+    ...
+}
+-----------------
+<1> Sword sinifi uretim maliyeti iron * 2 olarak hesaplanir.
+
+==== *Bow.java*
+
+Weapons arayuzunu implement eden silah sinifidir.
+
+[source,java]
+-----------------
+public class Bow implements Weapon{
+    ...
+
+	@Override
+	public int getCost() {
+		return (iron + wood);		<1>
+	}
+
+    ...
+}
+-----------------
+<1> Bow sinifi uretim maliyeti iron + wood olarak hesaplanir.
+
+==== *Staff.java*
+
+Weapons arayuzunu implement eden silah sinifidir.
+
+[source,java]
+-----------------
+public class Staff implements Weapon{
+    ...
+
+	@Override
+	public int getCost() {
+		return (wood*2);		<1>
+	}
+
+    ...
+}
+-----------------
+<1> Staff sinifi uretim maliyeti wood * 2 olarak hesaplanir.
+
+=== *Output*
+
+Open-Closed prensibi ile maliyet hesabi dinamik hale geitirilmistir. Bu sekilde kodun gelisiminin onu acilmistir.
+
+image::output.png[]

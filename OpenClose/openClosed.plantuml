@@ -1,0 +1,69 @@
+@startuml
+
+title Open-Closed Principle
+left to right direction
+
+interface Weapon{
+int getCost()
+void log()
+void listItems()
+}
+
+class Sword{
+-int iron;
+-String name;
++Sword(int iron, String name)
++int getIron()
++void setIron(int iron)
++String getName()
++void setName(String name)
++int getCost()
++void log()
++void listItems()
+}
+
+class Bow{
+-int iron;
+-int wood;
+-String name;
++Bow(int iron, int wood, String name) 
++int getIron()
++void setIron(int iron)
++int getWood()
++void setWood(int wood)
++String getName()
++void setName(String name)
++int getCost()
++void log()
++void listItems() 
+}
+
+class Staff{
+-int wood
+-String name
++Staff(int wood, String name)
++int getWood()
++void setWood(int wood)
++String getName()
++void setName(String name)
++int getCost()
++void log()
++void listItems()
+}
+
+class Blacksmith{
+-{static} Blacksmith instance
+-Blacksmith()
++{static} Blacksmith getInstance()
++void forge(List<Weapon> weapons)
+}
+
+
+Sword ..|> Weapon
+Bow ..|> Weapon
+Staff ..|> Weapon
+
+Blacksmith --> Blacksmith
+Blacksmith --> Weapon
+
+@enduml
