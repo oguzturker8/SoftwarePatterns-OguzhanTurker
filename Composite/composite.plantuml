@@ -1,0 +1,82 @@
+@startuml
+
+title Composite Structural Pattern
+left to right direction
+
+interface Character{
++void getCharacter()
+}
+
+class Player{
+-List<Character> playerList
++void getCharacter()
++void addCharacter(Character newChar)
++void removeCharacter(Character deleteChar)
+}
+
+class Monster{
+-List<Character> monsterList
++void getCharacter()
++void addCharacter(Character newChar)
++void removeCharacter(Character deleteChar)
+}
+
+class Human{
+-String name
+-double exp
+-int level
+-String raceTalent
+-List<Weapon> items
+-String[] skills
+-int mana
++Human(String name, double exp, int level, List<Weapon> items, int mana)
++void getCharacter()
++String getName()
++void setSkills(String[] skills)
++String[] getSkills()
++int getMana()
+}
+
+class Elf{
+-String name
+-double exp
+-int level
+-String raceTalent
+-List<Weapon> items
+-String skills[]
+-int mana
++Elf(String name, double exp, int level, List<Weapon> items,  int mana)
++void getCharacter()
++String getName()
++void setSkills(String[] skills)
++String[] getSkills()
++int getMana()
+}
+
+class Sauron{
+-String name
+-String talent
+-String item
++Sauron()
++void getCharacter()
+}
+
+Player ..|> Character
+Monster ..|> Character
+Human ..|> Character
+Elf ..|> Character
+Sauron ..|> Character
+
+Player --> Character
+Monster --> Character
+Human  --> Weapon
+Elf  --> Weapon
+
+
+interface Weapon{
+int getCost()
+void log()
+void listItems()
+}
+
+@enduml
