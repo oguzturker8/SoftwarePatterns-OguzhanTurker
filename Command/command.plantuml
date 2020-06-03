@@ -1,0 +1,54 @@
+@startuml
+
+title Command Behavioral Pattern
+left to right direction
+
+interface Command{
+void castSkill()
+}
+
+class Skill {
+-String[] skills
+-int mana
++Skill(String[] skills, int mana)
++void damageSkill()
++void healSkill()
++void armorSkill()
+}
+
+class ArmorSkill{
+-Skill skill
++ArmorSkill(Skill skill)
++void castSkill()
+}
+
+class DamageSkill{
+-Skill skill
++DamageSkill(Skill skill)
++void castSkill()
+}
+
+class HealSkill{
+-Skill skill
++HealSkill(Skill skill)
++void castSkill()
+}
+
+class SkillTree{
+-List<Command> skillTree
++void addSkill(Command Command)
++void castSkill()
+}
+
+
+ArmorSkill ..|> Command
+DamageSkill ..|> Command
+HealSkill ..|> Command
+
+
+SkillTree --> Command
+ArmorSkill --> Skill
+DamageSkill --> Skill
+HealSkill --> Skill
+
+@enduml
