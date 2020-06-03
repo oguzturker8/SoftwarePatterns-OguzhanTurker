@@ -9,11 +9,7 @@ Kullandigim siniflar birbirleri ile parent-child iliskisi icinde tek nesne olara
  --Sauron 
  -Player
  --Human
- ---Gandalf
- ---Aragorn
  --Elf
- ---Legolas
- ---Arwen
  
 seklindedir. 
 
