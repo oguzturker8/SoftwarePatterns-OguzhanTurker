@@ -10,3 +10,15 @@ include::Singleton/readme.adoc[]
 include::Prototype/readme.adoc[]
 
 include::ObjectPool/readme.adoc[]
+
+include::Builder/readme.adoc[]
+
+include::Iterator/readme.adoc[]
+
+include::Observer/readme.adoc[]
+
+include::Composite/readme.adoc[]
+
+include::Command/readme.adoc[]
+
+include::OpenClose/readme.adoc[]
